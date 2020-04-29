@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
+    <title>Hermes</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
     <!--     Fonts and icons     -->
@@ -32,7 +32,8 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
     <script src="../js/jquery-3.5.0.min.js"></script>
-    <script>
+    <script src="../application/jqueryFunction.js"></script>
+    <!-- <script>
         $(() => {
             $("#result").hide();
             $("#btn1").click(function () {
@@ -44,7 +45,7 @@
 
         function btnLoad_Click() {
             var idcheck = $("#ID").val();
-            var urlAPI = "http://localhost/g5/api.php/getdb/" + idcheck;
+            var urlAPI = "http://localhost/php/g5/api.php/getdb/" + idcheck;
 
             $.getJSON(urlAPI, { format: "json" })
                 .done(function (data) {
@@ -62,7 +63,7 @@
 
         function NewRoom() {
             var idcheck = $("#IDnew").val();
-            var urlAPI = "http://localhost/project/api.php/getdb/" + idcheck;
+            var urlAPI = "http://localhost/php/g5/api.php/getdb/" + idcheck;
 
             $.getJSON(urlAPI, { format: "json" })
                 .done(function (data) {
@@ -79,7 +80,7 @@
         }
 
         function selectionLoad() {
-            var urlAPI = "http://localhost/g5/api.php/getRoom";
+            var urlAPI = "http://localhost/php/g5/api.php/getRoom";
             // /"+$("#ID").val();
             $.getJSON(urlAPI, {
                 format: "json"
@@ -99,7 +100,7 @@
                 .fail(function (jqxhr, textStatus, error) {
                 })
         }
-    </script>
+    </script> -->
 </head>
 
 <body onload="selectionLoad()">
@@ -158,7 +159,7 @@
 
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-2">
                             <b>Stay date : </b>
                         </div>
@@ -174,14 +175,14 @@
                         <div class="col-md-2">
                             <b>phone :</b>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-2">
                             <b>Room : </b>
                         </div>
                         <div class="col-md-2">
-                            <b>Type :</b>
+                            <b>Type :<span id="Type"> </span></b>
                         </div>
                         <div class="col-md-2">
                             <b>Building :</b>
@@ -189,7 +190,7 @@
                         <div class="col-md-2">
                             <b>Views :</b>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col">
                             <div class="card">
@@ -200,7 +201,7 @@
                                     <span id="element-id"> </span>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form method="get">
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <form action="post">
@@ -230,8 +231,8 @@
                                             </div>
 
                                         </div>
-                                        <button type="submit" class="btn btn-info btn-fill pull-right">Comfirm</button>
-                                        <button type="submit" class="btn btn-info btn-fill pull-left">Cancel</button>
+                                        <button id="btnConfirm" type="submit" class="btn btn-info btn-fill pull-right">Comfirm</button>
+                                        <a href="test.html" class="btn btn-info btn-fill pull-left">Cancel</a>
                                     </form>
                                 </div>
 
@@ -241,7 +242,7 @@
                         </div>
                     </div>
 
-                    <footer class="footer">
+                    <!-- <footer class="footer">
                         <div class="container-fluid">
                             <nav>
                                 <ul class="footer-menu">
@@ -271,12 +272,12 @@
                                     <script>
                                         document.write(new Date().getFullYear())
                                     </script>
-                                    <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a
+                                    <a href="http://www.creative-tim.com">Hermes</a>, made with love for a
                                     better web
                                 </p>
                             </nav>
                         </div>
-                    </footer>
+                    </footer> -->
                 </div>
             </div>
 
@@ -288,9 +289,9 @@
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
 <script src="../assets/js/plugins/bootstrap-switch.js"></script>
 <!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
 <!--  Chartist Plugin  -->
-<script src="../assets/js/plugins/chartist.min.js"></script>
+<!-- <script src="../assets/js/plugins/chartist.min.js"></script> -->
 <!--  Notifications Plugin    -->
 <script src="../assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->

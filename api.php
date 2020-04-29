@@ -50,6 +50,17 @@ $app->get('/getRoom', function (Request $request, Response $response, array $arg
     $sth = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     return $this->response->withJson($sth);
 });
+
+$app->get('/updateRoom/{rid}/{gid}', function (Request $request, Response $response, array $args) {
+    $rid = $args['rid'];
+    $gid = $args['gid'];
+    $sql = "UPDATE guest_info SET ginfo_room = '$rid' WHERE ginfo_id = '$gid';";
+    $this->db->query($sql);
+    header( "location: http://localhost/php/g5/page/test.html" );
+    exit(0);
+
+});
+
 $app->run();
 ?>
 
