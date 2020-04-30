@@ -66,5 +66,5 @@ function selectionLoad() {
         })
 }
 function updateRoom() {
-    window.location.replace("http://localhost/php/g5/api.php/updateRoom/"+$("#select").val()+"/1");
+    window.location.replace("http://localhost/php/g5/api.php/updateRoom/"+"2/"+$("#select").val()+"/1");
 }

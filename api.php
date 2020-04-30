@@ -51,12 +51,17 @@ $app->get('/getRoom', function (Request $request, Response $response, array $arg
     return $this->response->withJson($sth);
 });
 
-$app->get('/updateRoom/{rid}/{gid}', function (Request $request, Response $response, array $args) {
+$app->get('/updateRoom/{orid}/{rid}/{gid}', function (Request $request, Response $response, array $args) {
+    $orid = $args['orid'];
     $rid = $args['rid'];
     $gid = $args['gid'];
-    $sql = "UPDATE guest_info SET ginfo_room = '$rid' WHERE ginfo_id = '$gid';";
+    $sql = "UPDATE rooms SET room_status = '1' WHERE room_id = '$orid'";
+    $sql2 = "UPDATE guest_info SET ginfo_room = '$rid' WHERE ginfo_id = '$gid';";
+    $sql3 = "UPDATE rooms SET room_status = '2' WHERE room_id = '$rid'";
     $this->db->query($sql);
-    header( "location: http://localhost/php/g5/page/test.html" );
+    $this->db->query($sql2);
+    $this->db->query($sql3);
+    header( "location: http://localhost/php/g5/page/Move%20Room.html" );
     exit(0);
 
 });
