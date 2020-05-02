@@ -34,68 +34,6 @@
      <script src="../js/jquery-3.5.0.min.js"></script>
      <script src="../application/jqueryFunction.js"></script>
  </head>
- <!-- <script>
-    $(() => {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const id = urlParams.get('id');
-        var urlAPI = "http://localhost/php/g5/api.php/getdb/" + id;
-        $.getJSON(urlAPI, { format: "json" })
-            .done(function (data) {
-                console.log(data);
-                $("#Room").text(data["0"]["room_name"]);
-                $("#Type").text(data["0"]["rtype_eng"]);
-                $("#Building").text(data["0"]["building_name"]);
-                $("#View").text(data["0"]["rview_eng"]);
-                $("#Price").text(data["0"]["room_price"]);
-                $("#Night").text(data["0"]["ginfo_night"]);
-                $("#Total_Price").text((data["0"]["room_price"])*parseInt(data["0"]["ginfo_night"]));
-            })
-            .fail(function (jqxhr, testStatus, error) { });
-        $('#select').change(showNewRoom);
-    });
-
-    function showNewRoom() {
-       night = $("#Night").text();
-         var idcheck = $("#select").val();
-         var urlAPI = "http://localhost/php/g5/api.php/getNewRoom/" + idcheck;
-
-         $.getJSON(urlAPI, { format: "json" })
-             .done(function (data) {
-                 console.log(data);
-                 $("#Roomnew").text(data["0"]["room_name"]);
-                 $("#Typenew").text(data["0"]["rtype_eng"]);
-                 $("#Buildingnew").text(data["0"]["building_name"]);
-                 $("#Viewnew").text(data["0"]["rview_eng"]);
-                 $("#Pricenew").text(data["0"]["room_price"]);
-                 $("#Nightnew").text(night)
-                 $("#Total_Pricenew").text((data["0"]["room_price"])* parseInt(night));
-             })
-             .fail(function (jqxhr, testStatus, error) { });
-     } 
-
-    function selectionLoad() {
-        var urlAPI = "http://localhost/php/g5/api.php/getRoom";
-        // /"+$("#ID").val();
-        $.getJSON(urlAPI, {
-            format: "json"
-        })
-            .done(function (data) {
-                console.log(data);
-                var selectionObject = document.getElementById("select");
-                for (var i = 0; i < data.length; i++) {
-                    var option = document.createElement("OPTION"),
-                        txt = document.createTextNode(data[i]['room_name']);
-                    option.appendChild(txt);
-                    option.setAttribute("value", data[i]['room_id']);
-                    select.insertBefore(option, select.lastChild);
-                    $("#element-id").val(data[i]['room_id']);
-                }
-            })
-            .fail(function (jqxhr, textStatus, error) {
-            })
-    }
-</script> -->
  <body>
      <div class="wrapper">
          <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
@@ -147,47 +85,9 @@
  
              <div class="content">
                  <div class="container-fluid">
-                     <!-- <div class="row">
-                         <div class="col-md-2">
-                             <b>Stay date : </b>
-                         </div>
-                         <div class="col-md-2">
-                             <b>Book date :</b>
-                         </div>
-                         <div class="col-md-2">
-                             <b>by :</b>
-                         </div>
-                         <div class="col-md-2">
-                             <b>agency :</b>
-                         </div>
-                         <div class="col-md-2">
-                             <b>phone :</b>
-                         </div>
-                     </div>
- 
-                     <div class="row">
-                         <div class="col-md-2">
-                             <b>Room : </b>
-                         </div>
-                         <div class="col-md-2">
-                             <b>Type :</b>
-                         </div>
-                         <div class="col-md-2">
-                             <b>Building :</b>
-                         </div>
-                         <div class="col-md-2">
-                             <b>Views :</b>
-                         </div>
-                     </div> -->
                      <div class="row">
                          <div class="col">
                              <div class="card">
-                                 <!-- <div class="card-header">
-                                     <h4 class="card-title">Room Information</h4>
-                                     <input type="text" name="" id="ID" /><br />
-                                     <button id="btnLoad">Load</button><br />
-                                     <span id="element-id"> </span>
-                                 </div> -->
                                  <div class="card-body">
                                      <form method="post">
                                          <div class="row">
@@ -199,7 +99,6 @@
                                                              <option value="">เลือกห้องพัก</option>
                                                          </select>
                                                      </div>
-                                                     <!-- <p class="text-center"><button id="btnLoad" class="btn btn-success"><i class="far fa-save"></i>  บันทึก</button></p> -->
                                                  </form>
                                              </div>
                                              <span id="room_id"></span>
