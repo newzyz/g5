@@ -2,7 +2,7 @@
         selectionLoad();
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        const id = urlParams.get('resinfo_id');
+        const id = urlParams.get('ginfo_id');
         var urlAPI = "http://localhost/php/g5/api.php/getdb/" + id;
         $.getJSON(urlAPI, { format: "json" })
             .done(function (data) {
@@ -67,7 +67,7 @@
             var api_url = "http://localhost/php/g5/api.php/updateRoom/";
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-            const key1 = urlParams.get('resinfo_id');
+            const key1 = urlParams.get('ginfo_id');
             var key2 = $("#oldroom").val();
             var key3 = $("#select").val();
             var tester = api_url + key1 + "/" + key2 + "/" +key3;

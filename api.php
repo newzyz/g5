@@ -64,17 +64,16 @@ $app->get('/getRoom', function (Request $request, Response $response, array $arg
     return $this->response->withJson($sth);
 });
 
-$app->post('/updateRoom/{resinfo_id}/{old_room}/{new_room}', function (Request $request, Response $response, array $args) {
-    $resinfo_id = $args['resinfo_id'];
+$app->post('/updateRoom/{ginfo_id}/{old_room}/{new_room}', function (Request $request, Response $response, array $args) {
+    $ginfo_id = $args['ginfo_id'];
     $old_room = $args['old_room'];
     $new_room = $args['new_room'];
 
     $sql = "UPDATE rooms SET room_status = '1' WHERE room_id = '$old_room'";
     $this->db->query($sql);
     $sql2 = "update guest_info
-            join book_log on guest_info.ginfo_id = book_log.bl_ginfo
-            set guest_info.ginfo_room = '$new_room'
-            where book_log.bl_reservation = '$resinfo_id' and guest_info.ginfo_room='$old_room';";
+            set ginfo_room = '$new_room'
+            where ginfo_id = '$ginfo_id' and ginfo_room='$old_room';";
     $this->db->query($sql2);
     $sql3 = "UPDATE rooms SET room_status = '2' WHERE room_id = '$new_room'";
     $this->db->query($sql3);
