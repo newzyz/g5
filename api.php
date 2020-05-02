@@ -31,17 +31,30 @@ $container ['db'] = function ($c) {
 };
 $app->get('/getdb/{idcheck}', function (Request $request, Response $response, array $args) {
     $id = $args['idcheck'];
-    $sql = "Select * from guest_info g join rooms r
-            on g.ginfo_room = r.room_id 
-            join room_type rt
-            on r.room_type = rt.rtype_id
-            join building b
-            on r.room_building = b.building_id
-            join room_view rv
-            on r.room_view = rv.rview_id
+    $sql = "Select * from guest_info join rooms
+            on ginfo_room = room_id 
+            join room_type
+            on room_type = rtype_id
+            join building
+            on room_building = building_id
+            join room_view
+            on room_view = rview_id
             where ginfo_id='".$id."'";
     $sth = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     
+    return $this->response->withJson($sth);
+});
+
+$app->get('/getNewRoom/{idcheck}', function (Request $request, Response $response, array $args) {
+    $id = $args['idcheck'];
+    $sql = "Select * from rooms join room_type 
+            on room_type = rtype_id
+            join building
+            on room_building = building_id
+            join room_view 
+            on room_view = rview_id
+            where room_id ='".$id."'";
+    $sth = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     return $this->response->withJson($sth);
 });
 
@@ -51,21 +64,21 @@ $app->get('/getRoom', function (Request $request, Response $response, array $arg
     return $this->response->withJson($sth);
 });
 
-$app->get('/updateRoom/{orid}/{rid}/{gid}', function (Request $request, Response $response, array $args) {
-    $orid = $args['orid'];
-    $rid = $args['rid'];
-    $gid = $args['gid'];
-    $sql = "UPDATE rooms SET room_status = '1' WHERE room_id = '$orid'";
-    $sql2 = "UPDATE guest_info SET ginfo_room = '$rid' WHERE ginfo_id = '$gid';";
-    $sql3 = "UPDATE rooms SET room_status = '2' WHERE room_id = '$rid'";
-    $this->db->query($sql);
-    $this->db->query($sql2);
-    $this->db->query($sql3);
-    header( "location: http://localhost/php/g5/page/Move%20Room.html" );
-    exit(0);
+$app->post('/updateRoom/{resinfo_id}/{old_room}/{new_room}', function (Request $request, Response $response, array $args) {
+    $resinfo_id = $args['resinfo_id'];
+    $old_room = $args['old_room'];
+    $new_room = $args['new_room'];
 
+    $sql = "UPDATE rooms SET room_status = '1' WHERE room_id = '$old_room'";
+    $this->db->query($sql);
+    $sql2 = "update guest_info
+            join book_log on guest_info.ginfo_id = book_log.bl_ginfo
+            set guest_info.ginfo_room = '$new_room'
+            where book_log.bl_reservation = '$resinfo_id' and guest_info.ginfo_room='$old_room';";
+    $this->db->query($sql2);
+    $sql3 = "UPDATE rooms SET room_status = '2' WHERE room_id = '$new_room'";
+    $this->db->query($sql3);
 });
 
 $app->run();
 ?>
-
