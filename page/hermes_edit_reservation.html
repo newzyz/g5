@@ -180,8 +180,8 @@
                                     <h4 class="card-title" id="result">Modify or Cancel this booking</h4>
                                 </div>
                                 <div class="col-md-4 text-right">
-                                    <button type="button" id="btn_add" class="btn btn-primary"><i
-                                            class="nc-icon nc-simple-add"></i> Add</button>
+                                    <button type="button" id="btn_add" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#add_room"><i class="nc-icon nc-simple-add"></i> Add</button>
                                     <button type="button" id="btn_close" class="btn btn-info"><i
                                             class="nc-icon nc-simple-remove"></i> Close</button>
                                 </div>
@@ -198,7 +198,9 @@
                                     </div>
                                     <div class="col-md-7">
                                         <div class="text-md-right">
-                                            <h4><a href="" id="save_update">S</a> <a href="" id="cancel">C</a></h4>
+                                            <h4><a href="" id="save_update" data-toggle="modal"
+                                                    data-target="#confirm_update">S</a> <a href="" id="cancel">C</a>
+                                            </h4>
                                         </div>
                                     </div>
                                 </div>
@@ -275,6 +277,7 @@
                         <!-- END form -->
                     </div>
                 </div>
+                <!-- Row GUEST -->
                 <div class="row">
                     <div class="col-md-5">
                         <div class="card">
@@ -289,8 +292,9 @@
                                         </div>
                                         <div class="col-md-2">
                                             <div class="text-md-right">
-                                                <h4><a id="save_update_guest" href="">S</a> <a href="">C</a> 
-                                                    <a href="move.html">M</a></h4>
+                                                <h4><a id="save_update_guest" href="" data-toggle="modal"
+                                                        data-target="#confirm_update_guest">S</a> <a href="">C</a>
+                                                    <a href="" data-toggle="modal" data-target="#moveroom">M</a></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -352,93 +356,259 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- group 3 -->
-                <div id="g3" class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-head">
-                                <div class="col-md">
-                                    <h3>Test group 3</h3>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="col-me">
-                                    <p>Page group 3</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- End Row Guest -->
             </div>
 
 
-            <!-- modal -->
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                Launch demo modal
-            </button>
-
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="confirm_update" tabindex="-1" role="dialog"
+                aria-labelledby="confirm_updateTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <h5 class="modal-title" id="confirm_updateTitle">UPDATE DATABASE</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            Are you sure you want to <strong>Save</strong> this <strong>CONTACT</strong> into the
+                            database?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button id="btn_no" type="button" class="btn btn-secondary"
+                                data-dismiss="modal">Close</button>
+                            <button id="btn_yes" type="button" class="btn btn-primary" data-dismiss="modal">Save
+                                changes</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- end moal -->
 
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav>
-                        <ul class="footer-menu">
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Company
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Portfolio
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Blog
-                                </a>
-                            </li>
-                        </ul>
-                        <p class="copyright text-center">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                            <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                        </p>
-                    </nav>
+            <div class="modal fade" id="confirm_update_guest" tabindex="-1" role="dialog"
+                aria-labelledby="confirm_update_guestTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirm_update_guestTitle">UPDATE DATABASE</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to <strong>Save</strong> this <strong>GUEST</strong> into the
+                            database?
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn_no_guest" type="button" class="btn btn-secondary"
+                                data-dismiss="modal">Close</button>
+                            <button id="btn_yes_guest" type="button" class="btn btn-primary" data-dismiss="modal">Save
+                                changes</button>
+                        </div>
+                    </div>
                 </div>
-            </footer>
+            </div>
+            <!-- modal alert -->
+            <div id="modal_alert" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
+                aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content alert alert-success">
+                        Update Success.
+                    </div>
+                </div>
+            </div>
+            <!-- end modal alert -->
+
+
+
+            <!-- modal add room -->
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="add_room" tabindex="-1" role="dialog" aria-labelledby="add_roomLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="width:45rem;">
+                        <div class="modal-header">
+                            <div class="col-md-5">
+                                <h4 class="modal-title" id="add_roomLabel">ADD RESERVATION</h4>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="text-md-right">
+                                    <h4><a href="" id="save_add_room">S</a> <a href="" id="move_add_room">M</a> <a
+                                            href="" id="cancel_add_room" data-dismiss="modal">X</a>
+                                    </h4>
+                                </div>
+                            </div>
+                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button> -->
+                        </div>
+                        <div class="modal-body" style="width:45rem;">
+
+                            <!-- start code -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-1">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="">Add Room </label>
+                                            <select class="form-control" id="select">
+                                                <option value="defult">Room</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group ">
+                                            <label for="">First Name : </label>
+                                            <br>
+                                            <input type="text" class="form-control" placeholder="First Name" id="fname1"
+                                                readonly />
+                                            <br>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Last Name : </label>
+                                            <br>
+                                            <input type="text" class="form-control" placeholder="Last Name" id="lname1"
+                                                readonly />
+                                            <br>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Phone : </label>
+                                            <br>
+                                            <input type="text" class="form-control" placeholder="Phone" id="tel1"
+                                                readonly />
+                                            <br>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">E-mail : </label>
+                                            <br>
+                                            <input type="text" class="form-control" placeholder="Phone" id="email1"
+                                                readonly />
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end code -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal room -->
+
+            
+
+            <!-- Modal -->
+            <div class="modal fade" id="moveroom" role="dialog" tabindex="0" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="width:55rem;">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <div class="modal-body" style="width:55rem;">
+                                <h4 class="modal-title" id="myModalLabel">MOVE ROOM</h4>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="text-md-right">
+                                    <h4><a href="" id="save_add_room">S</a> <a href="" id="cancel_add_room" data-dismiss="modal">X</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal Body -->
+                        <div class="modal-body">
+                            <p class="statusMsg"></p>
+                            <div class="card-body">
+                                <form method="post">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <form action="post">
+                                                <div class="form-group">
+                                                    <label>Room :</label>
+                                                    <select id="select" class="form-control">
+                                                        <option value="">Selece Room</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <span id="room_id"></span>
+                                        <div class="col-md-4">
+                                            <label for="name">Room : <span id="oldroom" value="">
+                                                </span>(<span id="Room"> </span>) (<span id="Roomnew">
+                                                </span>)</label><br />
+                                            <label for="type">Type : (<span id="Type"> </span>) (<span id="Typenew">
+                                                </span>)</label><br />
+                                            <label for="building">Building : (<span id="Building"> </span>)
+                                                (<span id="Buildingnew"> </span>)</label><br />
+                                            <label for="views">Views : (<span id="View"> </span>) (<span id="Viewnew">
+                                                </span>)</label><br />
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="price">Price : (<span id="Price"> </span>) (<span id="Pricenew">
+                                                </span>)</label><br />
+                                            <label for="night">Night : (<span id="Night"> </span>) (<span id="Nightnew">
+                                                </span>)</label><br />
+                                            <label for="totalprice">Total Price : (<span id="Total_Price">
+                                                </span>)
+                                                (<span id="Total_Pricenew"> </span>)</label><br />
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!--end model move room-->
+        <!--end model-->
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav>
+                    <ul class="footer-menu">
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-center">
+                        ©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>
+                        <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    </p>
+                </nav>
+            </div>
+        </footer>
+    </div>
     </div>
 </body>
 <!--   Core JS Files   -->
